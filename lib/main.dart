@@ -23,6 +23,12 @@ const linkTextStyle=TextStyle(
 
       home: Scaffold(
         body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/mir.jpg'),
+              fit: BoxFit.contain,
+            ),
+          ),
           width: double.infinity,
           height: double.infinity,
           padding: EdgeInsets.symmetric(horizontal: 50),
@@ -30,7 +36,8 @@ const linkTextStyle=TextStyle(
                        child: SingleChildScrollView(
               child: Column(children:  [
                 SizedBox(height: 150,),
-                SizedBox(width: 110, height: 84, child: Placeholder(),),
+                const SizedBox(width: 110, height: 84,
+                  child: Image(image: AssetImage('assets/png.png')),),
                 SizedBox(height: 20,),
                 Text ('Введите логин в виде 10 цифр номера телефона',
                 style: TextStyle(fontSize: 16, color: Color.fromRGBO(0, 0, 0, 0.6)),),
