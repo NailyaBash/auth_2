@@ -64,19 +64,34 @@ class _NetworkingScreenState extends State<NetworkingScreen> {
           title: const Text ('Fetch example'),
         ),
         body: Center(
-          child: FutureBuilder<Post>(
-            future: futurePost,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data!.title);
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-              return const CircularProgressIndicator();
-            },
-          ), //FutureBuilder
+          child: Column (
+          children: [
+            FutureBuilder<Post>(
+              future: futurePost,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text(snapshot.data!.title);
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                return const CircularProgressIndicator();
+              },
+            ),
+            FutureBuilder<Post>(
+              future: futurePost,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text(snapshot.data!.body);
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                return const CircularProgressIndicator();
+              },
+            ),
+          ], //FutureBuilder
         ), //Center
-      ), //Scaffold
+      ),
+      ),//Scaffold
     );
   }
 }
